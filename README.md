@@ -79,6 +79,34 @@ The original 10 classes are not auto-detected, but manual settings work for them
 
 The same guide is in `HealBot/Docs/CustomSpells.txt`.
 
+## Settings lost after running the game as administrator?
+
+If your addon settings suddenly look reset (for example after an update you started as administrator), they are
+**not lost**. Windows keeps two copies of the game's saved settings when the game is installed under
+`C:\Program Files (x86)\`:
+
+| How the game was started | Settings are read from / saved to |
+| --- | --- |
+| Normally | `%LOCALAPPDATA%\VirtualStore\Program Files (x86)\Grimfall\Games\Wotlk\WTF` |
+| As administrator | `C:\Program Files (x86)\Grimfall\Games\Wotlk\WTF` |
+
+Switching between the two loads the other, older copy. This affects every addon that saves settings, not only this one.
+
+**C – recommended: update as administrator, play normally**
+1. Start the launcher as administrator and let the update finish.
+2. **Do not press Play.** Close the launcher.
+3. Start the launcher again normally and play from there.
+
+**B – once and for all: give yourself write access to the game folder**
+- Right click `C:\Program Files (x86)\Grimfall` → *Properties → Security → Edit* → select *Users* → tick
+  *Modify* → *OK*. After that the game never needs administrator rights and there is only one copy.
+
+**Your settings already "disappeared"?** With the game closed:
+1. Copy the `WTF` folder from `%LOCALAPPDATA%\VirtualStore\Program Files (x86)\Grimfall\Games\Wotlk`
+   to `C:\Program Files (x86)\Grimfall\Games\Wotlk` and replace the files there.
+2. If you chose **B**: rename `%LOCALAPPDATA%\VirtualStore\Program Files (x86)\Grimfall` (e.g. to `Grimfall_old`),
+   so Windows stops reading the old copy.
+
 ## Slash commands
 
 | Command | Action |
